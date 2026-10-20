@@ -1,0 +1,13 @@
+flowchart LR
+    CC["CC-NEWS archive"]:::ext --> ING["Spark ingestion"]:::svc
+    ING --> ART[("Article tables")]:::store
+    ART --> PROC["Chunk, tag, embed"]:::svc
+    PROC --> VEC[("Chunks and vectors")]:::store
+    VEC --> RAG["RAG agent CLI"]:::svc
+    RAG --> LLM["Groq / Gemini APIs"]:::ext
+    RAG --> API["Query service"]:::prop
+
+    classDef svc fill:#dbeafe,stroke:#1d4ed8,stroke-width:1.5px,color:#0f172a
+    classDef store fill:#dcfce7,stroke:#15803d,stroke-width:1.5px,color:#0f172a
+    classDef ext fill:#ffedd5,stroke:#c2410c,stroke-width:1.5px,color:#0f172a
+    classDef prop fill:#f3f4f6,stroke:#6b7280,stroke-width:1.5px,stroke-dasharray:6 4,color:#374151

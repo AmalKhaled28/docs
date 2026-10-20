@@ -1,0 +1,12 @@
+flowchart LR
+    L["Launcher scripts"]:::svc --> D["Spark driver"]:::svc
+    D --> R["YARN ResourceManager"]:::svc
+    R --> E["Executors"]:::svc
+    L --> H[("HDFS app cache")]:::store
+    H --> E
+    D --> P[("PostgreSQL")]:::store
+
+    classDef svc fill:#dbeafe,stroke:#1d4ed8,stroke-width:1.5px,color:#0f172a
+    classDef store fill:#dcfce7,stroke:#15803d,stroke-width:1.5px,color:#0f172a
+    classDef ext fill:#ffedd5,stroke:#c2410c,stroke-width:1.5px,color:#0f172a
+    classDef prop fill:#f3f4f6,stroke:#6b7280,stroke-width:1.5px,stroke-dasharray:6 4,color:#374151

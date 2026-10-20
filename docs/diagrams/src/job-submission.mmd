@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant O as Operator
+    participant S as run_processing.sh
+    participant P as Python helpers
+    participant SS as spark-submit
+    participant Y as YARN
+    O->>S: run stage with flags
+    S->>P: load .env defaults
+    S->>P: resolve settings
+    P-->>S: executors, memory, dry-run
+    Note over S: package code and venv
+    S->>SS: submit in client mode
+    SS->>Y: request executors
+    Y-->>SS: executors started
